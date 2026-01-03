@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --ext .ts,.tsx",
+    "fix": "yarn prettier --write . && yarn lint --fix"
   },
   "dependencies": {
     "next": "16.1.1",
+    "prettier": "^3.7.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
@@ -22,5 +24,6 @@
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }
