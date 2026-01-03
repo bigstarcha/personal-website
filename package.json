@@ -10,6 +10,7 @@
     "fix": "yarn prettier --write . && yarn lint --fix"
   },
   "dependencies": {
+    "motion": "^12.23.26",
     "next": "16.1.1",
     "prettier": "^3.7.4",
     "react": "19.2.3",
@@ -17,11 +18,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/lodash": "^4.17.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
+    "lodash": "^4.17.21",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
