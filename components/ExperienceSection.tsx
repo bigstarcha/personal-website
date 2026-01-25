@@ -16,4 +16,6 @@ function ExperienceSection() {
   );
 }
 
+// I'm thinking like CV style with resumes and dividers as like gray lines with border-b border-0 border-solid type shit
+
 export default ExperienceSection;
