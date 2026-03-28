@@ -4,19 +4,17 @@ import React from "react";
 import ExperienceCard from "./ExperienceCard";
 import { experiences } from "@/utils/experiences";
 
-function ExperienceSection() {
+function SkillsSection() {
   return (
     <div className="flex flex-row justify-center pt-12 bg-foreground">
       <div className="flex flex-col w-full mt-12">
-        <h1 className="font-bold text-4xl text-center ">Experience</h1>
+        <h1 className="font-bold text-4xl text-center ">Skills</h1>
         <div className="px-8">
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} {...experience} />
-          ))}
+          Skills skills skills yaddah yaddah whatever
         </div>
       </div>
     </div>
   );
 }
 
-export default ExperienceSection;
+export default SkillsSection;

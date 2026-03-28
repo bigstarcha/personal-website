@@ -33,10 +33,21 @@ function IntroSection() {
     [interestIndex],
   );
 
+  const subtexts = {
+    hidden: { y: -50, opacity: 0 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delayChildren: 0.25
+      }
+    }
+  };
+
   return (
     <div className="flex flex-row">
       <motion.div
-        className="bg-[url(../public/Tim.jpg)] bg-center bg-cover w-3/5 h-screen rounded-r-ellipse"
+        className="bg-[url(../public/Tim2.jpg)] bg-center bg-cover w-3/5 h-screen rounded-r-ellipse"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 3 }}
@@ -49,36 +60,38 @@ function IntroSection() {
             }}
           />
         </h1>
-        <Paragraph>
-          I&apos;m a full-stack software engineer of three years.
-        </Paragraph>
-        <Paragraph>
-          I like building websites and mobile apps, but I&apos;m always willing
-          to learn new things.
-        </Paragraph>
-        <Paragraph>
-          When I&apos;m not coding, I like to{" "}
-          <motion.span
-            key={interestIndex}
-            className={`bg-clip-text text-transparent bg-gradient-to-r ${currentInterest.style}`}
-            initial={{
-              opacity: 0,
-              y: -20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: 20,
-            }}
-            transition={{ duration: 2 }}
-          >
-            {currentInterest.text}
-          </motion.span>
-          .
-        </Paragraph>
+        <motion.div variants={subtexts}>
+          <Paragraph>
+            I&apos;m a full-stack software engineer of three years.
+          </Paragraph>
+          <Paragraph>
+            I like building websites and mobile apps, but I&apos;m always
+            willing to learn new things.
+          </Paragraph>
+          <Paragraph>
+            When I&apos;m not coding, I like to{" "}
+            <motion.span
+              key={interestIndex}
+              className={`bg-clip-text text-transparent bg-gradient-to-r ${currentInterest.style}`}
+              initial={{
+                opacity: 0,
+                y: -20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 20,
+              }}
+              transition={{ duration: 2 }}
+            >
+              {currentInterest.text}
+            </motion.span>
+            .
+          </Paragraph>
+        </motion.div>
         <SocialAccountButtons />
       </div>
     </div>
