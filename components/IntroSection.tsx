@@ -39,9 +39,9 @@ function IntroSection() {
       y: 0,
       opacity: 1,
       transition: {
-        delayChildren: 0.25
-      }
-    }
+        delayChildren: 0.25,
+      },
+    },
   };
 
   return (
@@ -53,7 +53,7 @@ function IntroSection() {
         transition={{ duration: 3 }}
       />
       <div className="flex flex-col justify-center items-center w-2/5">
-        <h1 className="text-5xl text-foreground text-bold mb-12">
+        <h1 className="font-merriweather text-6xl text-foreground text-bold mb-12">
           <Typewriter
             onInit={(typewriter) => {
               typewriter.typeString("Hi, I'm Tim Cha.").start();
@@ -65,8 +65,8 @@ function IntroSection() {
             I&apos;m a full-stack software engineer of three years.
           </Paragraph>
           <Paragraph>
-            I like building websites and mobile apps, but I&apos;m always
-            willing to learn new things.
+            I like building websites, mobile apps and AI systems, but I&apos;m
+            always willing to learn new things.
           </Paragraph>
           <Paragraph>
             When I&apos;m not coding, I like to{" "}

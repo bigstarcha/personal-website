@@ -13,6 +13,16 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --font-merriweather: var(--font-merriweather);
+  --font-mw-sans: var(--font-mw-sans);
+
+  --animate-carousel: carousel 73s infinite linear;
+
+  @keyframes carousel {
+    from { translate: 0; }
+    to { translate: -50%; }
+  }
 }
 
 @layer base {

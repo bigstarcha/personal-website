@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import ExperienceCard from "./ExperienceCard";
-import { experiences } from "@/utils/experiences";
 
 function ProjectsSection() {
   return (

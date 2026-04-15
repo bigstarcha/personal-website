@@ -30,6 +30,7 @@ function Toggle({ onClick }: { onClick: () => void }) {
       onClick={onClick}
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.2 }}
+      aria-label="Toggle the Navigation menu"
     >
       <IoMenu size={30} />
     </motion.button>

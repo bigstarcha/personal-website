@@ -11,32 +11,44 @@ function SocialAccountButtons() {
       <Link
         href="https://www.linkedin.com/in/timothy-cha-447b52192/"
         target="_blank"
+        id="timothy-cha-linkedin"
+        aria-label="Timothy Cha LinkedIn"
       >
-        <motion.button
+        <motion.div
           className="bg-foreground p-3 rounded-full hover:cursor-pointer"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.2 }}
         >
           <IoLogoLinkedin size={30} />
-        </motion.button>
+        </motion.div>
       </Link>
-      <Link href="https://github.com/bigstarcha" target="_blank">
-        <motion.button
+      <Link
+        href="https://github.com/bigstarcha"
+        target="_blank"
+        id="timothy-cha-github"
+        aria-label="Timothy Cha GitHub"
+      >
+        <motion.div
           className="bg-foreground p-3 rounded-full hover:cursor-pointer"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.2 }}
         >
           <IoLogoGithub size={30} />
-        </motion.button>
+        </motion.div>
       </Link>
-      <Link href="https://www.youtube.com/@chath23" target="_blank">
-        <motion.button
+      <Link
+        href="https://www.youtube.com/@chath23"
+        target="_blank"
+        id="timothy-cha-youtube"
+        aria-label="Timothy Cha YouTube"
+      >
+        <motion.div
           className="bg-foreground p-3 rounded-full hover:cursor-pointer"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.2 }}
         >
           <IoLogoYoutube size={30} />
-        </motion.button>
+        </motion.div>
       </Link>
     </div>
   );
