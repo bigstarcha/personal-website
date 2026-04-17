@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const INPUT_STYLE = "border-1 border-background p-2 rounded-md";
+const INPUT_STYLE = "border-2 border-background p-2 rounded-md";
 
 function ConnectSection() {
   const handleSubmit = () => {

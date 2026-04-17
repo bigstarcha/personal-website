@@ -1,40 +1,32 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { Experience } from "@/utils/experiences";
+import TagSection from "./TagSection";
 
 function ExperienceCard({
-  company,
-  companyColor,
   title,
+  company,
   yearRange,
   description,
+  tags,
 }: Experience) {
   return (
-    <motion.div
-      className="w-full flex flex-col py-4 mb-4 border-0 border-b border-solid"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 2 }}
-    >
-      <div className="flex flex-row justify-between">
-        <div className="mb-4">
-          <h1 className={`text-${companyColor} text-3xl font-bold`}>
-            {company}
-          </h1>
-          <h2 className="text-lg">{title}</h2>
-        </div>
-        <h2 className="text-xl italic">{yearRange}</h2>
-      </div>
-      {description.map((point, index) => (
-        <p key={index}>{point}</p>
-      ))}
-    </motion.div>
+    <div className="w-1/2 flex flex-col px-5 py-4 border-2 rounded-xl">
+      <h1 className="text-3xl mt-4 mb-2 font-bold text-center">{title}</h1>
+      <h2 className="text-2xl font-semibold text-center mb-1">{company}</h2>
+      <h2 className="text-xl text-center mb-4">{yearRange}</h2>
+      <TagSection tags={tags} />
+      {description && description.length > 0 && (
+        <ul className="list-disc ml-5 space-y-1">
+          {description.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
-
-// I'm thinking like CV style with resumes and dividers as like gray lines with border-b border-0 border-solid type shit
 
 export default ExperienceCard;

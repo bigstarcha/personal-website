@@ -32,7 +32,7 @@ import {
   DockerOriginal,
   FigmaOriginal,
   PostmanOriginal,
-  SonarqubeOriginal
+  SonarqubeOriginal,
 } from "devicons-react";
 
 export type Skill = {
@@ -139,7 +139,7 @@ export const backendSkills: Skill[] = [
   {
     icon: <JunitOriginal size={100} />,
     name: "JUnit 5",
-  }
+  },
 ];
 
 export const devopsOtherSkills: Skill[] = [
@@ -178,5 +178,5 @@ export const devopsOtherSkills: Skill[] = [
   {
     icon: <SonarqubeOriginal size={100} />,
     name: "SonarQube",
-  }
+  },
 ];

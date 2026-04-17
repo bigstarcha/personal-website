@@ -26,7 +26,7 @@ function Toggle({ onClick }: { onClick: () => void }) {
   // When opened, the small circle expands into the square. This is basically visually indistinguishable from what we see in the demo.
   return (
     <motion.button
-      className="absolute bg-foreground top-4 right-4 p-3 rounded-full hover:cursor-pointer"
+      className="absolute bg-foreground shadow-lg top-4 right-4 p-3 rounded-full hover:cursor-pointer"
       onClick={onClick}
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.2 }}

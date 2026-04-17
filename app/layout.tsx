@@ -1,10 +1,7 @@
 // https://www.reddit.com/r/nextjs/comments/12p94t6/how_do_i_add_multiple_fonts_using_nextfont/
 
 import type { Metadata } from "next";
-import {
-  Merriweather,
-  Merriweather_Sans,
-} from "next/font/google";
+import { Merriweather, Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -30,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${merriweather.variable} ${merriweather_sans.variable} `}>
+      <body
+        className={`${merriweather.variable} ${merriweather_sans.variable} `}
+      >
         <main className="font-mw-sans">{children}</main>
       </body>
     </html>

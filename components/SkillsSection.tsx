@@ -7,7 +7,12 @@
 
 import React from "react";
 import { TypescriptOriginal } from "devicons-react";
-import { Skill, frontendSkills, backendSkills, devopsOtherSkills } from "@/utils/skills";
+import {
+  Skill,
+  frontendSkills,
+  backendSkills,
+  devopsOtherSkills,
+} from "@/utils/skills";
 
 function SkillTile({ icon, name }: Skill) {
   return (
@@ -29,11 +34,12 @@ function SkillSubsection({
     <div className="flex flex-row items-center w-full mb-4 last:mb-0">
       <h2 className="font-semibold text-3xl w-1/4">{title}</h2>
       <div className="flex w-3/4 overflow-x-hidden">
-        <div className="animate-carousel inline-flex whitespace-nowrap gap-4" aria-hidden={false}>
+        <div
+          className="animate-carousel inline-flex whitespace-nowrap gap-4"
+          aria-hidden={false}
+        >
           {/** First copy */}
-          <div className="inline-flex gap-4">
-            {children}
-          </div>
+          <div className="inline-flex gap-4">{children}</div>
           {/** Second copy */}
           <div className="inline-flex gap-4" aria-hidden="true">
             {children}
@@ -48,8 +54,8 @@ function SkillsSection() {
   return (
     <div className="flex flex-row justify-center pt-12 bg-foreground">
       <div className="flex flex-col w-full mt-12">
-        <h1 className="font-bold text-4xl text-center ">Skills</h1>
-        <div className="mt-4 px-8">
+        <h1 className="font-bold text-4xl text-center">Skills</h1>
+        <div className="mt-6 px-8">
           <SkillSubsection title="Frontend Development">
             {frontendSkills.map((skill, index) => (
               <SkillTile key={index} {...skill} />
