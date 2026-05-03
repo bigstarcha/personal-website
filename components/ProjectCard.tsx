@@ -26,7 +26,7 @@ function VisitButton({
       aria-label={`${name} Link ${index + 1}`}
     >
       <motion.div
-        className="inline-flex gap-2 items-center text-foreground bg-tertiary px-4 py-2 rounded-full hover:cursor-pointer"
+        className="inline-flex gap-2 items-center text-tertiary bg-quaternary px-4 py-2 rounded-full hover:cursor-pointer"
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
       >

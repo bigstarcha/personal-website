@@ -6,7 +6,7 @@ function TagSection({ tags }: { tags: string[] }) {
       {tags.map((tag, index) => (
         <span
           key={index}
-          className="text-foreground bg-tertiary px-2 py-1 rounded-full text-sm"
+          className="text-tertiary bg-quaternary px-2 py-1 rounded-full text-sm"
         >
           {tag}
         </span>

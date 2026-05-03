@@ -6,13 +6,15 @@
 :root {
   --background: #121212;
   --foreground: #fdfdfd;
-  --tertiary: #4f8ef7;
+  --tertiary: #1D4ED8;
+  --quaternary: #E3ECFC;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-tertiary: var(--tertiary);
+  --color-quaternary: var(--quaternary);
 
   --font-merriweather: var(--font-merriweather);
   --font-mw-sans: var(--font-mw-sans);
