@@ -1,14 +1,12 @@
+/* https://tailwindcss.com/docs/adding-custom-styles */
+/* https://github.com/tailwindlabs/tailwindcss/discussions/15960 */
+
 @import "tailwindcss";
 
 :root {
   --background: #121212;
   --foreground: #fdfdfd;
   --tertiary: #4f8ef7;
-}
-
-.rounded-r-ellipse {
-  border-top-right-radius: 200px 500px;
-  border-bottom-right-radius: 200px 500px;
 }
 
 @theme {
@@ -34,5 +32,21 @@
 @layer base {
   html {
     background-color: var(--color-background);
+  }
+}
+
+@layer components {
+  @variant lg {
+    .rounded-r-ellipse {
+      border-top-right-radius: 200px 500px;
+      border-bottom-right-radius: 200px 500px;
+    }
+  }
+
+  @variant xl {
+    .rounded-r-ellipse {
+      border-top-right-radius: 200px 500px;
+      border-bottom-right-radius: 200px 500px;
+    }
   }
 }

@@ -13,7 +13,7 @@ function ConnectSection() {
   return (
     <div className="flex flex-col items-center py-12 bg-foreground">
       <h1 className="font-bold text-4xl mt-12 mb-4">Connect With Me!</h1>
-      <form className="flex flex-col w-1/2" onSubmit={handleSubmit}>
+      <form className="flex flex-col w-full px-8 lg:w-1/2 xl:w-1/2 lg:px-0 xl:px-0" onSubmit={handleSubmit}>
         <label className="text-lg text-background" htmlFor="name">
           Name
         </label>

@@ -45,7 +45,7 @@ function ProjectCard({
   links,
 }: Project): JSX.Element {
   return (
-    <div className="flex flex-col border-2 border-solid rounded-xl px-5 py-4">
+    <div className="flex flex-col border-2 border-solid rounded-xl px-5 py-4 shadow-lg">
       <h1 className="mt-4 mb-2 font-bold text-3xl text-center">{name}</h1>
       <h2 className="mb-2 text-center font-semibold text-xl">{duration}</h2>
       <TagSection tags={tags} />

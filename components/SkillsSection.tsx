@@ -31,9 +31,9 @@ function SkillSubsection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row items-center w-full mb-4 last:mb-0">
-      <h2 className="font-semibold text-3xl w-1/4">{title}</h2>
-      <div className="flex w-3/4 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row xl:flex-row items-center w-full mb-4 last:mb-0">
+      <h2 className="font-semibold text-3xl w-full lg:w-1/4 xl:w-1/4 mb-4 text-center lg:mb-0 xl:mb-0">{title}</h2>
+      <div className="flex w-full lg:w-3/4 xl:w-3/4 overflow-x-hidden">
         <div
           className="animate-carousel inline-flex whitespace-nowrap gap-4"
           aria-hidden={false}

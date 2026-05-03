@@ -45,14 +45,14 @@ function IntroSection() {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col lg:flex-row xl:flex-row">
       <motion.div
-        className="bg-[url(../public/Tim2.jpg)] bg-center bg-cover w-3/5 h-screen rounded-r-ellipse"
+        className="bg-[url(../public/Tim2.jpg)] bg-center bg-cover h-screen w-full lg:w-3/5 xl:w-3/5 rounded-r-ellipse"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 3 }}
       />
-      <div className="flex flex-col justify-center items-center w-2/5">
+      <div className="flex flex-col justify-center items-center w-full lg:w-2/5 xl:w-2/5 h-screen">
         <h1 className="font-merriweather text-6xl text-foreground text-bold mb-12">
           <Typewriter
             onInit={(typewriter) => {
