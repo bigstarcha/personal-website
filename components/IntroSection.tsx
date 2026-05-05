@@ -12,7 +12,7 @@ function Paragraph({ children }: { children: React.ReactNode }) {
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
-      y: 0
+      y: 0,
     },
   };
 

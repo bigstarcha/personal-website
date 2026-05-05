@@ -1,5 +1,24 @@
-import HomePage from "@/components/HomePage";
+import React from "react";
+import Navigation from "@/components/Navigation";
+import IntroSection from "@/components/IntroSection";
+import ExperienceSection from "@/components/ExperienceSection";
+import SkillsSection from "@/components/SkillsSection";
+import ConnectSection from "@/components/ConnectSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import Footer from "@/components/Footer";
 
-export default function Home() {
-  return <HomePage />;
+function Home() {
+  return (
+    <>
+      <Navigation />
+      <IntroSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <ConnectSection />
+      <Footer />
+    </>
+  );
 }
+
+export default Home;

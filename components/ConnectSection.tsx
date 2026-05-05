@@ -7,7 +7,11 @@ const INPUT_STYLE = "border-2 border-background p-2 rounded-md";
 
 const formVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 2, staggerChildren: 0.5 } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 2, staggerChildren: 0.5 },
+  },
 };
 
 function ConnectSection() {

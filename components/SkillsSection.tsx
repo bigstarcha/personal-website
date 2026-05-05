@@ -16,7 +16,7 @@ import {
 
 const subsectionVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 function SkillTile({ icon, name }: Skill) {
@@ -36,7 +36,14 @@ function SkillSubsection({
   children: React.ReactNode;
 }) {
   return (
-    <motion.div variants={subsectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 2 }} className="flex flex-col lg:flex-row xl:flex-row items-center w-full mb-4 last:mb-0">
+    <motion.div
+      variants={subsectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 2 }}
+      className="flex flex-col lg:flex-row xl:flex-row items-center w-full mb-4 last:mb-0"
+    >
       <h2 className="font-semibold text-3xl w-full lg:w-1/4 xl:w-1/4 mb-4 text-center lg:mb-0 xl:mb-0">
         {title}
       </h2>
