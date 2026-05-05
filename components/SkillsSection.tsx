@@ -53,7 +53,7 @@ function SkillSubsection({
 function SkillsSection() {
   return (
     <div className="flex flex-row justify-center pt-12 bg-foreground">
-      <div className="flex flex-col w-full mt-12">
+      <div id="skills-section" className="flex flex-col w-full pt-12">
         <h1 className="font-bold text-4xl text-center">Skills</h1>
         <div className="mt-6 px-8">
           <SkillSubsection title="Frontend Development">

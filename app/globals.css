@@ -6,8 +6,12 @@
 :root {
   --background: #121212;
   --foreground: #fdfdfd;
-  --tertiary: #1D4ED8;
-  --quaternary: #E3ECFC;
+  --tertiary: #1d4ed8;
+  --quaternary: #e3ecfc;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme {

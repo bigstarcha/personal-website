@@ -12,7 +12,7 @@ const rightStyle = "lg:justify-end xl:justify-end lg:pl-12 xl:pl-12";
 function ExperienceSection() {
   return (
     <div className="flex flex-row justify-center pt-12 bg-foreground">
-      <div className="flex flex-col w-full mt-12">
+      <div id="experience-section" className="flex flex-col w-full pt-12">
         <h1 className="font-bold text-4xl text-center mb-6">Experience</h1>
         <div className="relative px-8">
           <div className="hidden lg:block xl:block absolute top-0 bottom-0 left-1/2 w-[2px] bg-background" />
