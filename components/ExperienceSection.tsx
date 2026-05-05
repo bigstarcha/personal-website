@@ -11,7 +11,7 @@ const rightStyle = "lg:justify-end xl:justify-end lg:pl-12 xl:pl-12";
 
 function ExperienceSection() {
   return (
-    <div className="flex flex-row justify-center pt-12 bg-foreground">
+    <section className="flex flex-row justify-center pt-12 bg-foreground">
       <div id="experience-section" className="flex flex-col w-full pt-12">
         <h1 className="font-bold text-4xl text-center mb-6">Experience</h1>
         <div className="relative px-8">
@@ -28,7 +28,7 @@ function ExperienceSection() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

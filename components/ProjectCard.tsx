@@ -7,6 +7,11 @@ import { IoOpenOutline } from "react-icons/io5";
 import TagSection from "@/components/TagSection";
 import { Project } from "@/utils/projects";
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 }
+};
+
 function VisitButton({
   name,
   link,
@@ -45,7 +50,7 @@ function ProjectCard({
   links,
 }: Project): JSX.Element {
   return (
-    <div className="flex flex-col border-2 border-solid rounded-xl px-5 py-4 shadow-lg">
+    <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 2 }} className="flex flex-col border-2 border-solid rounded-xl px-5 py-4 shadow-lg">
       <h1 className="mt-4 mb-2 font-bold text-3xl text-center">{name}</h1>
       <h2 className="mb-2 text-center font-semibold text-xl">{duration}</h2>
       <TagSection tags={tags} />
@@ -60,7 +65,7 @@ function ProjectCard({
         )}
         {!Array.isArray(links) && <VisitButton name={name} link={links} />}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

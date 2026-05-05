@@ -1,19 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { FormEventHandler } from "react";
 import { motion } from "framer-motion";
 
 const INPUT_STYLE = "border-2 border-background p-2 rounded-md";
 
+const formVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 2, staggerChildren: 0.5 } }
+};
+
 function ConnectSection() {
-  const handleSubmit = () => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     // Implement logic to send an email given the following user information.
+    event.preventDefault();
+    event.currentTarget.reset(); // Thanks Copilot
   };
 
   return (
-    <div className="flex flex-col items-center py-12 bg-foreground">
-      <h1 id="contact-section" className="font-bold text-4xl pt-12 mb-4">Connect With Me!</h1>
-      <form className="flex flex-col w-full px-8 lg:w-1/2 xl:w-1/2 lg:px-0 xl:px-0" onSubmit={handleSubmit}>
+    <section className="flex flex-col items-center py-12 bg-foreground">
+      <h1 id="contact-section" className="font-bold text-4xl pt-12 mb-4">
+        Connect With Me!
+      </h1>
+      <motion.form
+        variants={formVariants}
+        initial="hidden"
+        whileInView="visible"
+        className="flex flex-col w-full px-8 lg:w-1/2 xl:w-1/2 lg:px-0 xl:px-0"
+        onSubmit={handleSubmit}
+      >
         <label className="text-lg text-background" htmlFor="name">
           Name
         </label>
@@ -54,8 +69,8 @@ function ConnectSection() {
             Send Message
           </motion.button>
         </div>
-      </form>
-    </div>
+      </motion.form>
+    </section>
   );
 }
 

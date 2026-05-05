@@ -8,27 +8,27 @@ export const MAX_INTERESTS = 6;
 const interests: Interest[] = [
   {
     text: "work out",
-    style: "from-green-400 to-cyan-400",
+    style: "from-red-500 to-amber-500",
   },
   {
     text: "do some music stuff",
-    style: "from-sky-400 to-purple-400",
+    style: "from-orange-500 to-yellow-500",
   },
   {
     text: "play video games",
-    style: "from-red-400 to-amber-400",
+    style: "from-lime-500 to-emerald-500",
   },
   {
     text: "hang out with friends",
-    style: "from-lime-400 to-teal-400",
+    style: "from-teal-500 to-blue-500",
   },
   {
     text: "read new books",
-    style: "from-orange-400 to-yellow-400",
+    style: "from-blue-500 to-purple-500",
   },
   {
     text: "explore new places",
-    style: "from-indigo-400 to-fuchsia-400",
+    style: "from-indigo-500 to-fuchsia-500",
   },
 ];
 

@@ -12,7 +12,7 @@ import { IoMenu } from "react-icons/io5";
 type NavItem = {
   title: string;
   href: string;
-}
+};
 
 const navItems: NavItem[] = [
   {

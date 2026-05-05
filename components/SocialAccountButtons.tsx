@@ -6,8 +6,19 @@ import { IoLogoLinkedin, IoLogoGithub, IoLogoYoutube } from "react-icons/io5";
 import Link from "next/link";
 
 function SocialAccountButtons() {
+  const variants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
-    <div className="grid grid-cols-3 gap-4 mt-12">
+    <motion.div
+      variants={variants}
+      className="grid grid-cols-3 gap-4 mt-12 w-max self-center"
+    >
       <Link
         href="https://www.linkedin.com/in/timothy-cha-447b52192/"
         target="_blank"
@@ -50,7 +61,7 @@ function SocialAccountButtons() {
           <IoLogoYoutube size={30} />
         </motion.div>
       </Link>
-    </div>
+    </motion.div>
   );
 }
 

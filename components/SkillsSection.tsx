@@ -6,13 +6,18 @@
 "use client";
 
 import React from "react";
-import { TypescriptOriginal } from "devicons-react";
+import { motion } from "framer-motion";
 import {
   Skill,
   frontendSkills,
   backendSkills,
   devopsOtherSkills,
 } from "@/utils/skills";
+
+const subsectionVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 }
+};
 
 function SkillTile({ icon, name }: Skill) {
   return (
@@ -31,8 +36,10 @@ function SkillSubsection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col lg:flex-row xl:flex-row items-center w-full mb-4 last:mb-0">
-      <h2 className="font-semibold text-3xl w-full lg:w-1/4 xl:w-1/4 mb-4 text-center lg:mb-0 xl:mb-0">{title}</h2>
+    <motion.div variants={subsectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 2 }} className="flex flex-col lg:flex-row xl:flex-row items-center w-full mb-4 last:mb-0">
+      <h2 className="font-semibold text-3xl w-full lg:w-1/4 xl:w-1/4 mb-4 text-center lg:mb-0 xl:mb-0">
+        {title}
+      </h2>
       <div className="flex w-full lg:w-3/4 xl:w-3/4 overflow-x-hidden">
         <div
           className="animate-carousel inline-flex whitespace-nowrap gap-4"
@@ -46,13 +53,13 @@ function SkillSubsection({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function SkillsSection() {
   return (
-    <div className="flex flex-row justify-center pt-12 bg-foreground">
+    <section className="flex flex-row justify-center pt-12 bg-foreground">
       <div id="skills-section" className="flex flex-col w-full pt-12">
         <h1 className="font-bold text-4xl text-center">Skills</h1>
         <div className="mt-6 px-8">
@@ -73,7 +80,7 @@ function SkillsSection() {
           </SkillSubsection>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
