@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FormEventHandler } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const INPUT_STYLE = "border-2 border-background p-2 rounded-md";
@@ -15,23 +15,64 @@ const formVariants = {
 };
 
 function ConnectSection() {
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
-    // Implement logic to send an email given the following user information.
-    event.preventDefault();
-    event.currentTarget.reset(); // Thanks Copilot
+  // Page wil not automatically refresh. Fields will automatically reset (React 19).
+  const handleSubmit = async (formData: FormData) => {
+    const payload = {
+      name: formData.get("name") as FormDataEntryValue,
+      email: formData.get("email") as FormDataEntryValue,
+      message: formData.get("message") as FormDataEntryValue,
+    };
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        setShowErrorMessage(true);
+        // Hide the message after 5 seconds
+        setTimeout(() => setShowErrorMessage(false), 5000);
+        return;
+      }
+
+      setShowSaveMessage(true);
+      // Hide the message after 5 seconds
+      setTimeout(() => setShowSaveMessage(false), 5000);
+    } catch (error) {
+      setShowErrorMessage(true);
+      // Hide the message after 5 seconds
+      setTimeout(() => setShowErrorMessage(false), 5000);
+    }
   };
+
+  const [showSaveMessage, setShowSaveMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   return (
     <section className="flex flex-col items-center py-12 bg-foreground">
       <h1 id="contact-section" className="font-bold text-4xl pt-12 mb-4">
         Connect With Me!
       </h1>
+      {showSaveMessage && (
+        <h2 className="text-lg text-green-600">
+          Thanks for reaching out to me! I will be in touch shortly.
+        </h2>
+      )}
+      {showErrorMessage && (
+        <h2 className="text-lg text-red-600">
+          Something went wrong. Please try again later.
+        </h2>
+      )}
       <motion.form
         variants={formVariants}
         initial="hidden"
         whileInView="visible"
         className="flex flex-col w-full px-8 lg:w-1/2 xl:w-1/2 lg:px-0 xl:px-0"
-        onSubmit={handleSubmit}
+        action={handleSubmit}
       >
         <label className="text-lg text-background" htmlFor="name">
           Name
