@@ -35,7 +35,7 @@ export async function POST(req: Request) {
       from: senderEmail,
       to: [recipientEmail],
       subject: `You got a new message from ${senderName}!`,
-      text: message
+      text: message,
       // react: EmailTemplate({ name: senderName, message }),
     });
 

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 function SocialAccountButtons() {
   const variants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,

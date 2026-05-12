@@ -1,12 +1,14 @@
 import React from "react";
+import Navigation from "@/components/Navigation";
+import PhotoDiary from "@/components/PhotoDiary";
 
-function PhotoDiary() {
+function PhotoDiaryPage() {
   return (
-    <div>
-      <h1>Photo Diary</h1>
-      <p>This is the photo diary page.</p>
-    </div>
+    <>
+      <Navigation />
+      <PhotoDiary />
+    </>
   );
 }
 
-export default PhotoDiary;
+export default PhotoDiaryPage;

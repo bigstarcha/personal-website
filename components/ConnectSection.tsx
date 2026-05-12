@@ -71,6 +71,7 @@ function ConnectSection() {
         variants={formVariants}
         initial="hidden"
         whileInView="visible"
+        viewport={{ once: true }}
         className="flex flex-col w-full px-8 lg:w-1/2 xl:w-1/2 lg:px-0 xl:px-0"
         action={handleSubmit}
       >
