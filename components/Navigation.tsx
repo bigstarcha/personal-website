@@ -17,23 +17,23 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     title: "About",
-    href: "#",
+    href: "/#",
   },
   {
     title: "Experience",
-    href: "#experience-section",
+    href: "/#experience-section",
   },
   {
     title: "Projects",
-    href: "#projects-section",
+    href: "/#projects-section",
   },
   {
     title: "Skills",
-    href: "#skills-section",
+    href: "/#skills-section",
   },
   {
     title: "Contact",
-    href: "#contact-section",
+    href: "/#contact-section",
   },
   {
     title: "Photo Diary",

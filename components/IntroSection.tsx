@@ -9,7 +9,7 @@ import { getInterest, MAX_INTERESTS } from "@/utils/interests";
 
 function Paragraph({ children }: { children: React.ReactNode }) {
   const subtextVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -86,8 +86,8 @@ function IntroSection() {
             I&apos;m a full-stack software engineer of three years.
           </Paragraph>
           <Paragraph>
-            I like building websites, mobile apps and AI systems, but I&apos;m
-            always willing to learn new things.
+            I like building websites and mobile apps, but I&apos;m always
+            willing to learn new things.
           </Paragraph>
           <Paragraph>
             When I&apos;m not coding, I like to{" "}
