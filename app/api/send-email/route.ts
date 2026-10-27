@@ -10,6 +10,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const recipientEmail = process.env.RECIPIENT_EMAIL_ADDRESS || "";
 
+// Resend only sends from a domain you've verified. Until I own one, fall back to
+// their test address (which can only deliver to my own Resend account email).
+const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+
 export async function POST(req: Request) {
   try {
     const { name: senderName, email: senderEmail, message } = await req.json();
@@ -32,10 +36,11 @@ export async function POST(req: Request) {
     }
 
     const result = await resend.emails.send({
-      from: senderEmail,
+      from: fromEmail,
       to: [recipientEmail],
+      replyTo: senderEmail,
       subject: `You got a new message from ${senderName}!`,
-      text: message,
+      text: `From: ${senderName} <${senderEmail}>\n\n${message}`,
       // react: EmailTemplate({ name: senderName, message }),
     });
 

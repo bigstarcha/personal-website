@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const INPUT_STYLE = "border-2 border-background p-2 rounded-md";
 
@@ -42,7 +42,7 @@ function ConnectSection() {
       setShowSaveMessage(true);
       // Hide the message after 5 seconds
       setTimeout(() => setShowSaveMessage(false), 5000);
-    } catch (error) {
+    } catch {
       setShowErrorMessage(true);
       // Hide the message after 5 seconds
       setTimeout(() => setShowErrorMessage(false), 5000);
@@ -54,19 +54,22 @@ function ConnectSection() {
 
   return (
     <section className="flex flex-col items-center py-12 bg-foreground">
-      <h1 id="contact-section" className="font-bold text-4xl pt-12 mb-4">
+      <h2 id="contact-section" className="font-bold text-4xl pt-12 mb-4">
         Connect With Me!
-      </h1>
-      {showSaveMessage && (
-        <h2 className="text-lg text-green-600">
-          Thanks for reaching out to me! I will be in touch shortly.
-        </h2>
-      )}
-      {showErrorMessage && (
-        <h2 className="text-lg text-red-600">
-          Something went wrong. Please try again later.
-        </h2>
-      )}
+      </h2>
+      {/** The live region stays mounted so screen readers announce messages when they appear. */}
+      <div role="status" aria-live="polite">
+        {showSaveMessage && (
+          <p className="text-lg text-green-700">
+            Thanks for reaching out to me! I will be in touch shortly.
+          </p>
+        )}
+        {showErrorMessage && (
+          <p className="text-lg text-red-700">
+            Something went wrong. Please try again later.
+          </p>
+        )}
+      </div>
       <motion.form
         variants={formVariants}
         initial="hidden"
@@ -81,7 +84,9 @@ function ConnectSection() {
         <input
           className={INPUT_STYLE}
           type="text"
+          id="name"
           name="name"
+          autoComplete="name"
           placeholder="Your Name"
           required
         />
@@ -91,7 +96,9 @@ function ConnectSection() {
         <input
           className={INPUT_STYLE}
           type="email"
+          id="email"
           name="email"
+          autoComplete="email"
           placeholder="Your Email"
           required
         />
@@ -100,6 +107,7 @@ function ConnectSection() {
         </label>
         <textarea
           className={INPUT_STYLE}
+          id="message"
           name="message"
           placeholder="Send a Message!"
           required

@@ -1,11 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import _ from "lodash";
 import Typewriter from "typewriter-effect";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { photos } from "@/utils/photos";
+
+// Fisher-Yates shuffle. Returns a new array so the original order stays intact.
+function shuffle<T>(items: T[]): T[] {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
 
 const subtitleVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -28,23 +37,30 @@ const galleryItemVariants = {
   },
 };
 
-const shuffledPhotos = _.shuffle(photos);
-
 function PhotoDiary() {
   const [subtitleVisible, setSubtitleVisible] = useState(false);
+  // Shuffling at render time would give the server and browser different orders (a hydration error),
+  // so start in file order and shuffle while the gallery is still hidden.
+  const [orderedPhotos, setOrderedPhotos] = useState(photos);
 
   return (
     <section className="py-12 px-8">
       {/** @temp */}
       <h1 className="mt-12 text-foreground font-bold text-4xl text-center mb-6">
-        <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .typeString("My Photo Diary")
-              .callFunction(() => setSubtitleVisible(true))
-              .start();
-          }}
-        />
+        <span className="sr-only">My Photo Diary</span>
+        <span aria-hidden="true">
+          <Typewriter
+            onInit={(typewriter) => {
+              typewriter
+                .typeString("My Photo Diary")
+                .callFunction(() => {
+                  setOrderedPhotos(shuffle(photos));
+                  setSubtitleVisible(true);
+                })
+                .start();
+            }}
+          />
+        </span>
       </h1>
       <motion.h2
         variants={subtitleVariants}
@@ -63,16 +79,14 @@ function PhotoDiary() {
           transition={{ duration: 1 }}
           className="columns-1 md:columns-2 lg:columns-3 gap-6 [&>div:not(:first-child)]:mt-6"
         >
-          {shuffledPhotos.map((photo, _) => (
-            <motion.div
-              variants={galleryItemVariants}
-              key={photo.alt}
-            >
+          {orderedPhotos.map((photo) => (
+            <motion.div variants={galleryItemVariants} key={photo.alt}>
               <Image
                 className="rounded-xl"
                 src={photo.src}
                 width={450}
                 alt={photo.alt}
+                placeholder="blur"
               />
             </motion.div>
           ))}

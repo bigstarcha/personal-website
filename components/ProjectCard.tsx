@@ -1,7 +1,5 @@
-"use client";
-
 import React, { type JSX } from "react";
-import { motion } from "framer-motion";
+import * as motion from "motion/react-client";
 import Link from "next/link";
 import { IoOpenOutline } from "react-icons/io5";
 import TagSection from "@/components/TagSection";
@@ -27,8 +25,9 @@ function VisitButton({
       key={index}
       href={link}
       target="_blank"
+      rel="noopener noreferrer"
       id={`${name.toLowerCase()}-link-${index}`}
-      aria-label={`${name} Link ${index + 1}`}
+      aria-label={`Visit ${name}${index > 0 ? ` (link ${index + 1})` : ""} (opens in a new tab)`}
     >
       <motion.div
         className="inline-flex gap-2 items-center text-tertiary bg-quaternary px-4 py-2 rounded-full hover:cursor-pointer"
@@ -58,8 +57,8 @@ function ProjectCard({
       transition={{ duration: 2 }}
       className="flex flex-col border-2 border-solid rounded-xl px-5 py-4 shadow-lg"
     >
-      <h1 className="mt-4 mb-2 font-bold text-3xl text-center">{name}</h1>
-      <h2 className="mb-2 text-center font-semibold text-xl">{duration}</h2>
+      <h3 className="mt-4 mb-2 font-bold text-3xl text-center">{name}</h3>
+      <p className="mb-2 text-center font-semibold text-xl">{duration}</p>
       <TagSection tags={tags} />
       <p className="mb-2 text-center text-wrap">{description}</p>
       <div className="flex flex-col h-full items-center justify-end">

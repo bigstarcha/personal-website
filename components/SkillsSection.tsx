@@ -3,10 +3,8 @@
  * https://www.youtube.com/watch?v=KD1Yo8a_Qis - To help me with scroll
  */
 
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
+import * as motion from "motion/react-client";
 import {
   Skill,
   frontendSkills,
@@ -44,18 +42,18 @@ function SkillSubsection({
       transition={{ duration: 2 }}
       className="flex flex-col lg:flex-row xl:flex-row items-center w-full mb-4 last:mb-0"
     >
-      <h2 className="font-semibold text-3xl w-full lg:w-1/4 xl:w-1/4 mb-4 text-center lg:mb-0 xl:mb-0">
+      <h3 className="font-semibold text-3xl w-full lg:w-1/4 xl:w-1/4 mb-4 text-center lg:mb-0 xl:mb-0">
         {title}
-      </h2>
-      <div className="flex w-full lg:w-3/4 xl:w-3/4 overflow-x-hidden">
-        <div
-          className="animate-carousel inline-flex whitespace-nowrap gap-4"
-          aria-hidden={false}
-        >
+      </h3>
+      <div className="flex w-full lg:w-3/4 xl:w-3/4 overflow-x-hidden motion-reduce:overflow-x-auto">
+        <div className="animate-carousel motion-reduce:animate-none inline-flex whitespace-nowrap gap-4">
           {/** First copy */}
           <div className="inline-flex gap-4">{children}</div>
           {/** Second copy */}
-          <div className="inline-flex gap-4" aria-hidden="true">
+          <div
+            className="inline-flex gap-4 motion-reduce:hidden"
+            aria-hidden="true"
+          >
             {children}
           </div>
         </div>
@@ -68,7 +66,7 @@ function SkillsSection() {
   return (
     <section className="flex flex-row justify-center pt-12 bg-foreground">
       <div id="skills-section" className="flex flex-col w-full pt-12">
-        <h1 className="font-bold text-4xl text-center">Skills</h1>
+        <h2 className="font-bold text-4xl text-center">Skills</h2>
         <div className="mt-6 px-8">
           <SkillSubsection title="Frontend Development">
             {frontendSkills.map((skill, index) => (

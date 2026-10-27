@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import { Merriweather, Merriweather_Sans } from "next/font/google";
+import MotionProvider from "@/components/MotionProvider";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -15,9 +16,12 @@ const merriweather_sans = Merriweather_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Tim Cha",
-  description: "Navigation metadata for my website.",
-  viewport: "width=device-width, initial-scale=1.0", // Make the website responsive
+  title: {
+    default: "Tim Cha",
+    template: "%s | Tim Cha",
+  },
+  description:
+    "Tim Cha, full-stack software engineer: experience, projects, skills, and a photo diary.",
 };
 
 export default function RootLayout({
@@ -30,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${merriweather.variable} ${merriweather_sans.variable} `}
       >
-        <main className="font-mw-sans">{children}</main>
+        <MotionProvider>
+          <main className="font-mw-sans">{children}</main>
+        </MotionProvider>
       </body>
     </html>
   );

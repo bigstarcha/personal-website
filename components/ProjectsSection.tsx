@@ -1,7 +1,5 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
+import * as motion from "motion/react-client";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/utils/projects";
 
@@ -17,7 +15,7 @@ function ProjectsSection() {
   return (
     <section className="flex flex-row justify-center pt-12 bg-foreground">
       <div id="projects-section" className="flex flex-col w-full pt-12">
-        <h1 className="font-bold text-4xl text-center mb-6">Projects</h1>
+        <h2 className="font-bold text-4xl text-center mb-6">Projects</h2>
         <motion.div
           variants={projectSectionVariants}
           initial="hidden"

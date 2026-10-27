@@ -1,7 +1,5 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
+import * as motion from "motion/react-client";
 import { IoLogoLinkedin, IoLogoGithub, IoLogoYoutube } from "react-icons/io5";
 import Link from "next/link";
 
@@ -22,8 +20,9 @@ function SocialAccountButtons() {
       <Link
         href="https://www.linkedin.com/in/timothy-cha-447b52192/"
         target="_blank"
+        rel="noopener noreferrer"
         id="timothy-cha-linkedin"
-        aria-label="Timothy Cha LinkedIn"
+        aria-label="Timothy Cha LinkedIn (opens in a new tab)"
       >
         <motion.div
           className="bg-foreground p-3 rounded-full hover:cursor-pointer"
@@ -36,8 +35,9 @@ function SocialAccountButtons() {
       <Link
         href="https://github.com/bigstarcha"
         target="_blank"
+        rel="noopener noreferrer"
         id="timothy-cha-github"
-        aria-label="Timothy Cha GitHub"
+        aria-label="Timothy Cha GitHub (opens in a new tab)"
       >
         <motion.div
           className="bg-foreground p-3 rounded-full hover:cursor-pointer"
@@ -50,8 +50,9 @@ function SocialAccountButtons() {
       <Link
         href="https://www.youtube.com/@chath23"
         target="_blank"
+        rel="noopener noreferrer"
         id="timothy-cha-youtube"
-        aria-label="Timothy Cha YouTube"
+        aria-label="Timothy Cha YouTube (opens in a new tab)"
       >
         <motion.div
           className="bg-foreground p-3 rounded-full hover:cursor-pointer"

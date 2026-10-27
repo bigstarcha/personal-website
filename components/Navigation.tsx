@@ -5,8 +5,7 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import type { Variants } from "motion/react";
-import { motion, stagger } from "framer-motion";
+import { motion, stagger, type Variants } from "motion/react";
 import { IoMenu } from "react-icons/io5";
 
 type NavItem = {
@@ -46,7 +45,7 @@ const navItems: NavItem[] = [
  * This is a button that's positioned in the top right corner with some padding. It hovers to indicate that it is clickable,
  * and it has a menu size of 30.
  */
-function Toggle({ onClick }: { onClick: () => void }) {
+function Toggle({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) {
   // The top-4 and right-4 values were guesswork. This button hides the motion div, which when closed, is a small circle.
   // When opened, the small circle expands into the square. This is basically visually indistinguishable from what we see in the demo.
   return (
@@ -56,6 +55,8 @@ function Toggle({ onClick }: { onClick: () => void }) {
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.2 }}
       aria-label="Toggle the Navigation menu"
+      aria-expanded={isOpen}
+      aria-controls="navigation-menu"
     >
       <IoMenu size={30} />
     </motion.button>
@@ -132,13 +133,16 @@ function NavigationBar() {
       animate={isOpen ? "open" : "closed"}
       ref={containerRef}
     >
+      {/** inert keeps the hidden links out of the tab order while the menu is closed. */}
       <motion.div
+        id="navigation-menu"
         className="absolute top-0 right-0 w-[400px] h-screen bg-foreground border-0 border-solid border-l border-background"
         variants={sidebarVariants}
+        inert={!isOpen}
       >
         <NavigationSection />
       </motion.div>
-      <Toggle onClick={() => setIsOpen(!isOpen)} />
+      <Toggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
     </motion.nav>
   );
 }
