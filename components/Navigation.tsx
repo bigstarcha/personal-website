@@ -41,6 +41,13 @@ const navItems: NavItem[] = [
 ];
 
 /**
+ * Motion normally hands opacity and clip-path animations to the browser (WAAPI). Here, when those
+ * finished, the panel and links flashed back to their starting state for one frame. Passing any
+ * onUpdate makes Motion animate in JavaScript instead, which removes the flicker.
+ */
+const forceJsAnimation = () => {};
+
+/**
  * Annotations
  * This is a button that's positioned in the top right corner with some padding. It hovers to indicate that it is clickable,
  * and it has a menu size of 30.
@@ -99,6 +106,7 @@ function NavigationSection() {
           key={item.title}
           className="text-xl text-background p-3 hover:cursor-pointer"
           variants={navItemVariants}
+          onUpdate={forceJsAnimation}
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.1 }}
         >
@@ -138,6 +146,7 @@ function NavigationBar() {
         id="navigation-menu"
         className="absolute top-0 right-0 w-[400px] h-screen bg-foreground border-0 border-solid border-l border-background"
         variants={sidebarVariants}
+        onUpdate={forceJsAnimation}
         inert={!isOpen}
       >
         <NavigationSection />

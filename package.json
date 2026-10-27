@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "eslint .",
     "fix": "yarn prettier --write . && yarn lint --fix",
-    "photos": "node scripts/optimize-photos.mjs"
+    "photos": "node scripts/optimize-photos.mjs",
+    "email": "email dev --dir components/emails --port 3001"
   },
   "dependencies": {
+    "@react-email/components": "^1.0.12",
     "devicons-react": "^1.5.0",
     "motion": "^12.23.26",
     "next": "16.1.1",
@@ -21,6 +23,7 @@
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
+    "@react-email/ui": "6.11.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -28,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "prettier": "^3.7.4",
+    "react-email": "^6.11.3",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"

@@ -3,7 +3,7 @@
 "use server";
 
 import { NextResponse } from "next/server";
-// import { EmailTemplate } from "@/components/EmailTemplate";
+import { WelcomeEmail } from "@/components/emails/WelcomeEmail";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       replyTo: senderEmail,
       subject: `You got a new message from ${senderName}!`,
       text: `From: ${senderName} <${senderEmail}>\n\n${message}`,
-      // react: EmailTemplate({ name: senderName, message }),
+      react: WelcomeEmail({ username: senderName, replyToEmail: senderEmail, message }),
     });
 
     return NextResponse.json(result);

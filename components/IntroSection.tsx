@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import SocialAccountButtons from "./SocialAccountButtons";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Typewriter from "typewriter-effect";
 
 import portrait from "@/public/Tim2.jpg";
@@ -39,7 +39,7 @@ function IntroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setInterestIndex((prevIndex) => (prevIndex + 1) % MAX_INTERESTS);
-    }, 5000); // Change interest every 3 seconds
+    }, 5000); // Change interest every 5 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
@@ -108,14 +108,19 @@ function IntroSection() {
           </Paragraph>
           <Paragraph>
             When I&apos;m not coding, I like to{" "}
-            <motion.span
-              key={interestIndex}
-              className={`bg-clip-text text-transparent bg-gradient-to-r ${currentInterest.style}`}
-              animate={{ opacity: [0, 1, 1, 1, 0, 0, 0] }}
-              transition={{ duration: 7, ease: ["easeIn", "easeOut"] }}
-            >
-              {currentInterest.text}
-            </motion.span>
+            {/** mode="wait" fades the old interest out fully before the next one fades in. */}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={interestIndex}
+                className={`bg-clip-text text-transparent bg-gradient-to-r ${currentInterest.style}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {currentInterest.text}
+              </motion.span>
+            </AnimatePresence>
             .
           </Paragraph>
           <SocialAccountButtons />

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import Typewriter from "typewriter-effect";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -15,6 +15,18 @@ function shuffle<T>(items: T[]): T[] {
   }
   return result;
 }
+
+/**
+ * The photo order is decided once in the browser, and the photos mount directly in that order.
+ * - The server renders no photos (null), so its HTML can't disagree with the browser's random order.
+ * - Photos are never re-ordered after mounting: moving them in the same render that starts the
+ *   reveal broke Motion's stagger and left most of them stuck at opacity 0.
+ * The order is cached for the page load, so it re-shuffles on refresh, not on every client-side visit.
+ */
+let shuffledPhotos: typeof photos | null = null;
+const getShuffledPhotos = () => (shuffledPhotos ??= shuffle(photos));
+const getServerPhotos = () => null;
+const subscribe = () => () => {};
 
 const subtitleVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -39,9 +51,11 @@ const galleryItemVariants = {
 
 function PhotoDiary() {
   const [subtitleVisible, setSubtitleVisible] = useState(false);
-  // Shuffling at render time would give the server and browser different orders (a hydration error),
-  // so start in file order and shuffle while the gallery is still hidden.
-  const [orderedPhotos, setOrderedPhotos] = useState(photos);
+  const orderedPhotos = useSyncExternalStore(
+    subscribe,
+    getShuffledPhotos,
+    getServerPhotos,
+  );
 
   return (
     <section className="py-12 px-8">
@@ -53,10 +67,7 @@ function PhotoDiary() {
             onInit={(typewriter) => {
               typewriter
                 .typeString("My Photo Diary")
-                .callFunction(() => {
-                  setOrderedPhotos(shuffle(photos));
-                  setSubtitleVisible(true);
-                })
+                .callFunction(() => setSubtitleVisible(true))
                 .start();
             }}
           />
@@ -79,7 +90,7 @@ function PhotoDiary() {
           transition={{ duration: 1 }}
           className="columns-1 md:columns-2 lg:columns-3 gap-6 [&>div:not(:first-child)]:mt-6"
         >
-          {orderedPhotos.map((photo) => (
+          {orderedPhotos?.map((photo) => (
             <motion.div variants={galleryItemVariants} key={photo.alt}>
               <Image
                 className="rounded-xl"

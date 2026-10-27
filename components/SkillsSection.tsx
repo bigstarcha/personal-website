@@ -46,12 +46,17 @@ function SkillSubsection({
         {title}
       </h3>
       <div className="flex w-full lg:w-3/4 xl:w-3/4 overflow-x-hidden motion-reduce:overflow-x-auto">
-        <div className="animate-carousel motion-reduce:animate-none inline-flex whitespace-nowrap gap-4">
+        {/**
+         * The carousel shifts by -50%, so both copies must be exactly half the track's width.
+         * Each copy carries its own trailing spacing (pr-4) instead of a gap between them,
+         * otherwise the loop point is off by half a gap and the animation jumps each cycle.
+         */}
+        <div className="animate-carousel motion-reduce:animate-none inline-flex whitespace-nowrap">
           {/** First copy */}
-          <div className="inline-flex gap-4">{children}</div>
+          <div className="inline-flex gap-4 pr-4">{children}</div>
           {/** Second copy */}
           <div
-            className="inline-flex gap-4 motion-reduce:hidden"
+            className="inline-flex gap-4 pr-4 motion-reduce:hidden"
             aria-hidden="true"
           >
             {children}
