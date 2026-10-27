@@ -34,6 +34,9 @@ There is no test suite. Verify changes with `yarn lint` and `yarn build` (the bu
 - `components/`: One component per file, PascalCase filenames, default-style function components (`function Foo() {}` then export).
 - `components/MotionProvider.tsx`: Wraps the app in `MotionConfig reducedMotion="user"` (in `app/layout.tsx`).
 - `utils/`: Content as typed data, not hardcoded in JSX. `experiences.ts`, `projects.ts`, `interests.ts`, `skills.tsx`, `photos.ts`. **To change site content, edit these files** rather than the components.
+  - Two exceptions hold logic for the contact route:
+    - `utils/rate-limiting.ts`: the in-memory per-IP rate limiter (`isRateLimited`, `getClientIp`).
+    - `utils/contact-form.ts`: `spamBotChecks` (failures only a bot can cause, answered generically) and `validateFields` (failures real visitors can hit despite browser validation, answered with friendly messages). Keep its length limits in sync with the `maxLength` attributes in `ConnectSection`.
 - `public/assets/`: Photo diary images. They are imported as modules in `utils/photos.ts` (giving `StaticImageData`), so a new photo needs an import plus an entry in the `photos` array with `alt` text, then `yarn photos`.
 
 ## Conventions
