@@ -1,26 +1,58 @@
+/* https://tailwindcss.com/docs/adding-custom-styles */
+/* https://github.com/tailwindlabs/tailwindcss/discussions/15960 */
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #121212;
+  --foreground: #fdfdfd;
+  --tertiary: #1d4ed8;
+  --quaternary: #e3ecfc;
 }
 
-@theme inline {
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-tertiary: var(--tertiary);
+  --color-quaternary: var(--quaternary);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-merriweather: var(--font-merriweather);
+  --font-mw-sans: var(--font-mw-sans);
+
+  --animate-carousel: carousel 73s infinite linear;
+
+  @keyframes carousel {
+    from {
+      translate: 0;
+    }
+    to {
+      translate: -50%;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    background-color: var(--color-background);
+  }
+}
+
+@layer components {
+  @variant lg {
+    .rounded-r-ellipse {
+      border-top-right-radius: 200px 500px;
+      border-bottom-right-radius: 200px 500px;
+    }
+  }
+
+  @variant xl {
+    .rounded-r-ellipse {
+      border-top-right-radius: 200px 500px;
+      border-bottom-right-radius: 200px 500px;
+    }
+  }
 }
